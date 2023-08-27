@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            /* height: 50%; */
+            /* margin: auto; */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #output {
+            display: flex;
+            justify-content: center;
+        }
+        #btn{
+            margin-top: 5px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reverse A String </h1>
+        <label for="text-input">enter a text:</label>
+        <input type="text" id="text-input">
+        <button id="btn">convert</button>
+
+    </div>
+    <div id="output">
+        <p>output:</p>
+    </div>
+
+
+
+    <script>
+        let text = document.getElementById("text-input");
+        let output = document.getElementById("output");
+        let button = document.getElementById("btn");
+
+
+        button.addEventListener('click', function(){setTimeout(reverse,2000)})
+        
+        function reverse(){
+            let content = text.value;
+            let arr = content.split("");
+
+            let reversearray = arr.reverse();
+
+            let joinarray = reversearray.join("");
+            
+            
+            
+            let outputText = document.createElement("p");
+            outputText.textContent = joinarray;
+            
+
+            output.appendChild(outputText)
+
+        }
+        
+    
+        
+
+
+
+    </script>
+
+</body>
+
+</html>

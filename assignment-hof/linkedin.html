@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 50%;
+            height: 50%;
+            margin: auto;
+            display: flex;
+    flex-direction: column;
+            
+        }
+        h1{
+            text-align: center;
+            padding: 3px;
+        }
+        .inp{
+            padding: 5px 0;
+            
+        }
+        #btn{
+            background-color: skyblue;
+    color: white;
+    padding: 7px 3px;
+    width: 7rem;
+    margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Check For LinkedIn Profile</h1>
+
+        <label>URL:</label><br>
+        <input type="text" id="urlcheck" class="inp">
+        <span id="text"></span>
+
+        <button id="btn">submit</button>
+    </div>
+
+
+
+    <script>
+        const url = document.getElementById('urlcheck').value;
+        let pattern=/^http[s]?:\/\/www\.linkedin\.com\/(in|pub|public-profile\/in|public-profile\/pub)\/([\w]{6}-[\w]{1,}-[\w]+)$/
+  
+        const btn=document.getElementById("btn")
+
+        btn.addEventListener('click',myfunc)
+
+        function myfunc(){
+            if(url.match(pattern)){
+                text.textContent="hurray valid url";
+                text.style.color="green";
+
+                // return true;
+            }
+            else{
+                text.textContent="invalid url";
+                text.style.color="red";
+
+                // return false;
+
+            
+            }
+        }
+        
+    </script>
+</body>
+</html>

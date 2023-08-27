@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 2px dashed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-self: center;
+            text-align: center;
+        }
+        .book{
+            display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px dashed;
+        }
+        .author{
+            text-transform: capitalize;
+        }
+        .para{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Books Published After 2010 with Capitalized Author Names</h1>
+        <div id="output"></div>
+
+    </div>
+
+
+
+    <script>
+        let books = [
+            { title: "book1", author: "book1", year: 2010 },
+            { title: "book2", author: "book2", year: 2007 },
+            { title: "book3", author: "book3", year: 2011 },
+            { title: "book4", author: "book4", year: 2012 }
+        ]
+        let filteredbooks = books.filter(function (book) {
+            return book.year >= 2010;
+        })
+
+        let outputDiv = document.getElementById("output")
+
+        filteredbooks.forEach(function (book) {
+            let Bookdiv = document.createElement('div');
+            Bookdiv.classList.add('book');
+
+
+            let authorPara=document.createElement('p');
+            authorPara.classList.add('author');
+            authorPara.textContent="author name :"+book.author;
+
+
+            let titlePara=document.createElement('p');
+            titlePara.classList.add('para');
+            titlePara.textContent="title :"+book.title;
+
+            Bookdiv.appendChild(authorPara)
+            Bookdiv.appendChild(titlePara)
+
+            outputDiv.appendChild(Bookdiv)
+
+
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

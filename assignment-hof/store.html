@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#header {
+  margin: 20px auto;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header label,
+#header input,
+#header span {
+  margin-right: 10px;
+}
+
+#output {
+  margin: 20px auto;
+  width: 500px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.price {
+  margin-left: 10px;
+}
+    </style>
+</head>
+<body>
+    <h1>Store's Inventory</h1>
+
+  <div id="header">
+    <label for="exchange-input">Exchange rate (USD to INR):</label>
+    <input type="number" id="exchange-input" placeholder="Exchange rate">
+    <span id="usd-slot">(USD)</span>
+  </div>
+
+  <div id="output"></div>
+    
+
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var inventory = {
+    item1: { name: "Item 1", priceUSD: 10 },  // Price in USD
+    item2: { name: "Item 2", priceUSD: 20 },
+    item3: { name: "Item 3", priceUSD: 15 },
+    item4: { name: "Item 4", priceUSD: 25 }
+  };
+
+  var exchangeRate = 80;
+
+  var exchangeInput = document.getElementById("exchange-input");
+  exchangeInput.value = exchangeRate;
+  exchangeInput.addEventListener("input", function() {
+    exchangeRate = parseFloat(exchangeInput.value);
+    updateOutput();
+  });
+
+  var outputDiv = document.getElementById("output");
+
+  function updateOutput() {
+    outputDiv.innerHTML = "";
+
+    Object.entries(inventory).forEach(function([itemNme,item]) {
+      var itemDiv = document.createElement("div");
+      itemDiv.classList.add("item");
+
+      var nameSpan = document.createElement("span");
+      nameSpan.classList.add("name");
+      nameSpan.textContent = item.name;
+
+      var priceUSDSpan = document.createElement("span");
+      priceUSDSpan.classList.add("price");
+      priceUSDSpan.textContent = item.priceUSD + " USD";
+
+      var priceINR = item.priceUSD * exchangeRate;
+      var priceINRSpan = document.createElement("span");
+      priceINRSpan.classList.add("price");
+      priceINRSpan.textContent = priceINR + " INR";
+
+      itemDiv.appendChild(nameSpan);
+      itemDiv.appendChild(priceUSDSpan);
+      itemDiv.appendChild(priceINRSpan);
+
+      outputDiv.appendChild(itemDiv);
+    });
+  }
+
+  updateOutput();
+});
+    </script>
+</body>
+</html>
